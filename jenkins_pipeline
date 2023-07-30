@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/webremake/wrm_selene_python_hw_11_jenkins.git'
+            }
+        }
+        stage('Create .env file') {
+            steps {
+                script {
+                    def envContent = """
+                    SELENOID_LOGIN=user1
+                    SELENOID_PASSWORD=1234
+                    """
+                    writeFile file: '.env', text: envContent
+                }
+            }
+        }		
+        stage('run test demoqa') {
+            steps {
+                sh '''
+                python3 -m venv .venv
+                . .venv/bin/activate
+                pip install -r requirements.txt
+                python3 -m pytest
+                '''
+            }
+        }
+        stage('reporting') {
+            steps {
+                //sh 'rm -rf allure-repоrt'
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'tests/allure-results']]
+                ])
+            }
+        }
+    }
+}
