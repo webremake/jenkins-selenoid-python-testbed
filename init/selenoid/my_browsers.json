@@ -1,0 +1,50 @@
+{
+  "chrome": {
+    "default": "115.0", // Здесь указываем версию Chrome, которую хотим установить по умолчанию
+    "versions": {
+      "115.0": {
+        "video": true,
+        "env": ["LANG=ru_RU.UTF-8", "LANGUAGE=ru:en", "LC_ALL=ru_RU.UTF-8", "TZ=Europe/Moscow"],
+        "image": "selenoid/vnc:chrome_115.0",
+        "tmpfs": {"/tmp": "size=512m"},
+        "port": "4444"
+      }
+    }
+  },
+  "firefox": {
+    "default": "115.0",
+    "versions": {
+      "115.0": {
+        "video": true,
+        "env": ["LANG=ru_RU.UTF-8", "LANGUAGE=ru:en", "LC_ALL=ru_RU.UTF-8", "TZ=Europe/Moscow"],
+        "image": "selenoid/vnc:firefox_115.0",
+        "tmpfs": {"/tmp": "size=512m"},
+        "port": "4444"
+      }
+    }
+  },
+  "safari": {
+    "default": "15.0",
+    "versions": {
+      "15.0": {
+        "video": true,
+        "env": ["LANG=ru_RU.UTF-8", "LANGUAGE=ru:en", "LC_ALL=ru_RU.UTF-8", "TZ=Europe/Moscow"],
+        "image": "selenoid/vnc:safari_15.0",
+        "tmpfs": {"/tmp": "size=512m"},
+        "port": "4444"
+      }
+    }
+  },
+  "edge": {
+    "default": "114.0",
+    "versions": {
+      "114.0": {
+        "video": true,
+        "env": ["LANG=ru_RU.UTF-8", "LANGUAGE=ru:en", "LC_ALL=ru_RU.UTF-8", "TZ=Europe/Moscow"],
+        "image": "selenoid/vnc:edge_114.0",
+        "tmpfs": {"/tmp": "size=512m"},
+        "port": "4444"
+      }
+    }
+  }
+}
